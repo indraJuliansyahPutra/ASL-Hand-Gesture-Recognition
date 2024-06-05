@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ASL Hand Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!--<link rel="icon" type="image/png" href="{{ url_for('static', filename='favico.ico') }}">-->
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="/">ASL Hand Detection</a>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/detection">Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/graph">Graph</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div class="container">
+    <div class="container mt-4">
+        <h1 class="text-center">Welcome to ASL Hand Detection</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Project Overview</h2>
+                <p>
+                    This project demonstrates real-time ASL Hand Detection using a pre-trained model YOLO V8. The application captures video from your webcam and processes each frame to detect hand gestures. The detected hand are highlighted with bounding boxes, and the class names are displayed on the screen.
+                </p>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Features</h2>
+                <ul>
+                    <li>Real-time ASL Hand Detection using a webcam</li>
+                    <li>Easy-to-use web interface</li>
+                    <li>Start and stop detection with the click of a button</li>
+                    <li>Display detected hand with bounding boxes and class names</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>How it Works</h2>
+                <p>
+                    The system employs a deep learning model specifically trained to recognize American Sign Language (ASL) gestures. The model is loaded using the Ultralytics YOLO library. When the detection is started, frames from the webcam are continuously processed by the model. Each frame is analyzed, and the model predicts the bounding boxes and class labels for the detected hands. The results are then displayed in real-time on the web interface.
+                </p>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Steps to Use</h2>
+                <ol>
+                    <li>Navigate to the Detection page using the menu.</li>
+                    <li>Click the "Start Detection" button to begin capturing video from your webcam and detecting hand.</li>
+                    <li>View the live feed with detected hands highlighted on the screen.</li>
+                    <li>Click the "Stop Detection" button to stop capturing video and release the webcam.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="card mt-4 mb-4" style="padding-bottom: 100px;">
+            <div class="card-body">
+                <h2>Technologies Used</h2>
+                <ul>
+                    <li>Python for backend logic</li>
+                    <li>Flask for the web framework</li>
+                    <li>OpenCV for video capture and processing</li>
+                    <li>Ultralytics YOLO V8 for the hand detection model</li>
+                    <li>Bootstrap for responsive and aesthetic web design</li>
+                </ul>
+            </div>
+        </div>        
+    </div>
+    <footer class="footer bg-dark text-white mt-4">
+        <div class="container text-center py-3">
+            <p>&copy; 2024 IndraAnalytics. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

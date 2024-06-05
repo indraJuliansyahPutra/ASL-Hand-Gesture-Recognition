@@ -1,0 +1,5 @@
+train: Hand Gesture Detection\dataset\train
+val: Hand Gesture Detection\dataset\test
+
+nc: 6
+names: ["Hello", "ILoveYou", "No", "Please", "Thanks", "Yes"]
