@@ -32,3 +32,31 @@ ul, ol {
     bottom: 0;
     width: 100%;
 }
+
+.camera-frame {
+    border: 5px solid #28a745; /* Green border */
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 640px; /* Set to match video feed width */
+    height: 480px; /* Set to match video feed height */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    position: relative;
+}
+.camera-frame img {
+    display: none;
+}
+.camera-frame::before {
+    content: attr(data-alt);
+    position: absolute;
+    font-size: 24px;
+    color: #888;
+}
+.camera-frame img:not([src=""]) {
+    display: block;
+}
+.camera-frame img:not([src=""]) + .camera-frame::before {
+    display: none;
+}
