@@ -33,7 +33,8 @@ def graph():
 @app.route('/start_detection')
 def start_detection():
     global cap
-    cap = cv2.VideoCapture(0)
+    if cap is None:
+        cap = cv2.VideoCapture(0)
     return "Detection started"
 
 @app.route('/stop_detection')
@@ -42,7 +43,7 @@ def stop_detection():
     if cap is not None:
         cap.release()
         cap = None
-    return redirect(url_for('detection'))
+    return "Detection stopped"
 
 def generate_frames():
     global cap
@@ -72,6 +73,8 @@ def generate_frames():
 
 @app.route('/video_feed')
 def video_feed():
+    if cap is None:
+        return Response(status=204)  # No content
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
