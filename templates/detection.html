@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <!--<link rel="icon" type="image/png" href="{{ url_for('static', filename='favico.ico') }}">-->
+    <style>
+        .camera-frame {
+            border: 5px solid #28a745; /* Green border */
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 640px; /* Set to match video feed width */
+            height: 480px; /* Set to match video feed height */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        #video_feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video feed covers the entire area */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -30,14 +46,14 @@
             </div>
           </nav>
     </div>
-    <div class="container mt-4">
+    <div class="container mt-4 text-center">
         <h1 class="text-center">ASL Hand Detection</h1>
         <div class="text-center mt-4">
             <button class="btn btn-success" onclick="startDetection()">Start Detection</button>
             <button class="btn btn-danger" onclick="stopDetection()">Stop Detection</button>
         </div>
-        <div class="mt-4 text-center">
-            <img id="video_feed" src="{{ url_for('video_feed') }}" class="img-fluid" alt="Video Feed">
+        <div class="mt-4 camera-frame text-center" data-alt="">
+            <img id="video_feed" src="" class="img-fluid" alt="">
         </div>
     </div>
     <footer class="footer bg-dark text-white mt-4">
@@ -47,11 +63,19 @@
     </footer>
     <script>
         function startDetection() {
-            fetch('/start_detection').then(response => console.log(response.text()));
+            fetch('/start_detection').then(response => {
+                if (response.ok) {
+                    document.getElementById('video_feed').src = "{{ url_for('video_feed') }}?time=" + new Date().getTime();
+                }
+            });
         }
 
         function stopDetection() {
-            fetch('/stop_detection').then(response => console.log(response.text()));
+            fetch('/stop_detection').then(response => {
+                if (response.ok) {
+                    document.getElementById('video_feed').src = "";
+                }
+            });
         }
     </script>
 </body>
