@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result - ASL Hand Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.ico') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="/">ASL Hand Detection</a>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/detection">Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/upload">Upload<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/graph">Graph</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div class="container mt-4">
+        <h1 class="text-center">Detection Result</h1>
+        {% if image_url %}
+            <div class="text-center">
+                <img src="{{ image_url }}" class="img-fluid" alt="Detection Result">
+            </div>
+        {% endif %}
+        <br>
+        <a href="{{ url_for('upload') }}" class="btn btn-success">Upload Another File</a>
+    </div>
+    <footer class="footer bg-dark text-white mt-4">
+        <div class="container text-center py-3">
+            <p>&copy; 2024 IndraAnalytics. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
